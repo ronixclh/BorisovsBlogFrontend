@@ -29,10 +29,7 @@ export const AddPost = () => {
       const formData = new FormData()
       const file = event.target.files[0]
       formData.append('image', file)
-      const { data } = await axios.post(
-        process.env.REACT_APP_API_URL,
-        formData
-      )
+      const { data } = await axios.post(process.env.REACT_APP_API_URL, formData)
 
       setImageUrl(data.url)
     } catch (err) {
@@ -61,7 +58,10 @@ export const AddPost = () => {
       }
 
       const { data } = isEditing
-        ? await axios.patch(`${process.env.REACT_APP_API_URL}/posts/${id}`, fields) //awaitom peredajetsja zapros na redaktirovanije posta
+        ? await axios.patch(
+            `${process.env.REACT_APP_API_URL}/posts/${id}`,
+            fields
+          ) //awaitom peredajetsja zapros na redaktirovanije posta
         : await axios.post(`${process.env.REACT_APP_API_URL}/posts`, fields) //awaitom peredajetsja zapros na publikaciju posta
 
       const _id = isEditing ? id : data._id
@@ -138,7 +138,7 @@ export const AddPost = () => {
           </Button>
           <img
             className={styles.image}
-            src={`${process.env.REACT_APP_API_URL}/${imageUrl}`}
+            src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
             alt="Uploaded"
           />
         </>
