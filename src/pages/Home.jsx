@@ -43,13 +43,39 @@ export const Home = () => {
         <Tab label="Новые" onClick={changeActiveNew} />
         <Tab label="Популярные" onClick={changeActivePopular} />
       </Tabs>
-      <Grid container spacing={4} label="Новые">
+      <Grid container spacing={4}>
         <Grid xs={8} item>
           {(isPostsLoading
             ? [...Array(5)]
             : posts.items
                 .slice()
                 .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+          ).map((obj, index) =>
+            isPostsLoading ? (
+              <Post isLoading={true} key={index} />
+            ) : (
+              <Post
+                _id={obj._id}
+                title={obj.title}
+                imageUrl={
+                  obj.imageUrl
+                    ? `${process.env.REACT_APP_API_URL}${obj.imageUrl}`
+                    : ''
+                }
+                user={obj.user}
+                createdAt={obj.createdAt}
+                viewsCount={obj.viewsCount}
+                commentsCount={3}
+                tags={obj.tags}
+                isEditable={userData?._id === obj.user._id} //prava na redaktirovanije statej
+              />
+            )
+          )}
+        </Grid>
+        <Grid xs={8} item>
+          {(isPostsLoading
+            ? [...Array(5)]
+            : posts.items.slice().sort((a, b) => b.viewsCount - a.viewsCount)
           ).map((obj, index) =>
             isPostsLoading ? (
               <Post isLoading={true} key={index} />
