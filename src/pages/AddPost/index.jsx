@@ -61,12 +61,12 @@ export const AddPost = () => {
       }
 
       const { data } = isEditing
-        ? await axios.patch(`${process.env.REACT_APP_API_URL}posts/${id}`, fields) //awaitom peredajetsja zapros na redaktirovanije posta
-        : await axios.post(`${process.env.REACT_APP_API_URL}posts`, fields) //awaitom peredajetsja zapros na publikaciju posta
+        ? await axios.patch(`${process.env.REACT_APP_API_URL}/posts/${id}`, fields) //awaitom peredajetsja zapros na redaktirovanije posta
+        : await axios.post(`${process.env.REACT_APP_API_URL}/posts`, fields) //awaitom peredajetsja zapros na publikaciju posta
 
       const _id = isEditing ? id : data._id
 
-      navigate(`${process.env.REACT_APP_API_URL}posts/${_id}`)
+      navigate(`${process.env.REACT_APP_API_URL}/posts/${_id}`)
     } catch (err) {
       console.warn(err)
       alert('Ошибка при создании статьи')
@@ -76,7 +76,7 @@ export const AddPost = () => {
   React.useEffect(() => {
     if (id) {
       axios
-        .get(`${process.env.REACT_APP_API_URL}posts/${id}`)
+        .get(`${process.env.REACT_APP_API_URL}/posts/${id}`)
         .then(({ data }) => {
           setTitle(data.title)
           setText(data.text)
@@ -138,7 +138,7 @@ export const AddPost = () => {
           </Button>
           <img
             className={styles.image}
-            src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
+            src={`${process.env.REACT_APP_API_URL}/${imageUrl}`}
             alt="Uploaded"
           />
         </>
