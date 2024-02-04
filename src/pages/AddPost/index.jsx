@@ -29,7 +29,10 @@ export const AddPost = () => {
       const formData = new FormData()
       const file = event.target.files[0]
       formData.append('image', file)
-      const { data } = await axios.post(process.env.REACT_APP_API_URL, formData)
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API_URL}/upload`,
+        formData
+      )
 
       setImageUrl(data.url)
     } catch (err) {
