@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseUrl: 'http://localhost:4444',
+  baseUrl: process.env.REACT_APP_API_URL,
 })
 
 //middleware na token

@@ -3,7 +3,7 @@ import axios from '../../axios'
 
 //avtorizacija
 export const fetchAuth = createAsyncThunk('auth/fetchAuth', async (params) => {
-  const data = await axios.post('http://localhost:4444/auth/login', params)
+  const data = await axios.post(`${process.env.REACT_APP_API_URL}auth/login`, params)
   return data
 })
 
@@ -11,7 +11,7 @@ export const fetchRegister = createAsyncThunk(
   'auth/fetchRegister',
   async (params) => {
     const { data } = await axios.post(
-      'http://localhost:4444/auth/register',
+      `${process.env.REACT_APP_API_URL}auth/register`,
       params
     )
     return data
@@ -19,7 +19,7 @@ export const fetchRegister = createAsyncThunk(
 )
 
 export const fetchAuthMe = createAsyncThunk('auth/fetchAuthMe', async () => {
-  const { data } = await axios.get('http://localhost:4444/auth/me')
+  const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/auth/me`)
   return data
 })
 

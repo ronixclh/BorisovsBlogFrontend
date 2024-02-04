@@ -2,19 +2,19 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from '../../axios'
 
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
-  const { data } = await axios.get('http://localhost:4444/posts')
+  const { data } = await axios.get(`${process.env.REACT_APP_API_URL}posts`)
   return data
 })
 
 export const fetchTags = createAsyncThunk('posts/fetchTags', async () => {
-  const { data } = await axios.get('http://localhost:4444/tags')
+  const { data } = await axios.get(`${process.env.REACT_APP_API_URL}tags`)
   return data
 })
 
 export const fetchRemovePost = createAsyncThunk(
   'auth/fetchRemovePost',
   async (id) => {
-    await axios.delete(`http://localhost:4444/posts/${id}`)
+    await axios.delete(`${process.env.REACT_APP_API_URL}posts/${id}`)
   }
 )
 
