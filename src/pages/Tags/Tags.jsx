@@ -7,8 +7,11 @@ import { Post } from '../../components/Post'
 
 const Tags = () => {
   const dispatch = useDispatch()
+  const userData = useSelector((state) => state.auth.data)
   const { posts } = useSelector((state) => state.posts)
   const { tag } = useParams()
+
+  const isPostsLoading = posts.status === 'loading'
 
   React.useEffect(() => {
     dispatch(fetchPosts())
