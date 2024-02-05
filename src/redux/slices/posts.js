@@ -32,7 +32,7 @@ const initialState = {
 const postsSlice = createSlice({
   name: 'posts',
   initialState,
-  reducer: {},
+  reducers: {},
   extraReducers: {
     //Получение статей
     [fetchPosts.pending]: (state, action) => {
