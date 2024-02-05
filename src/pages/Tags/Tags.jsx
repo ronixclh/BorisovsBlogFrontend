@@ -23,27 +23,26 @@ const Tags = () => {
     <>
       <Grid container spacing={4}>
         <Grid xs={8} item>
-          {(isPostsLoading ? [...Array(5)] : filteredPosts.items).map(
-            (obj, index) =>
-              isPostsLoading ? (
-                <Post isLoading={true} key={index} />
-              ) : (
-                <Post
-                  _id={obj._id}
-                  title={obj.title}
-                  imageUrl={
-                    obj.imageUrl
-                      ? `${process.env.REACT_APP_API_URL}${obj.imageUrl}`
-                      : ''
-                  }
-                  user={obj.user}
-                  createdAt={obj.createdAt}
-                  viewsCount={obj.viewsCount}
-                  commentsCount={3}
-                  tags={obj.tags}
-                  isEditable={userData?._id === obj.user._id} //prava na redaktirovanije statej
-                />
-              )
+          {(isPostsLoading ? [...Array(5)] : filteredPosts).map((obj, index) =>
+            isPostsLoading ? (
+              <Post isLoading={true} key={index} />
+            ) : (
+              <Post
+                _id={obj._id}
+                title={obj.title}
+                imageUrl={
+                  obj.imageUrl
+                    ? `${process.env.REACT_APP_API_URL}${obj.imageUrl}`
+                    : ''
+                }
+                user={obj.user}
+                createdAt={obj.createdAt}
+                viewsCount={obj.viewsCount}
+                commentsCount={3}
+                tags={obj.tags}
+                isEditable={userData?._id === obj.user._id} //prava na redaktirovanije statej
+              />
+            )
           )}
         </Grid>
       </Grid>
