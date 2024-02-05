@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { Header } from './components'
 import { Home, FullPost, Registration, AddPost, Login } from './pages'
+import Tags from '../src/pages/Tags/Tags'
 import { Routes, Route } from 'react-router-dom'
 import { fetchAuthMe, selectIsAuth } from './redux/slices/auth'
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/add-post" element={<AddPost />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
+          <Route path="/tags/:tag" element={<Tags />} />
         </Routes>
       </Container>
     </>
