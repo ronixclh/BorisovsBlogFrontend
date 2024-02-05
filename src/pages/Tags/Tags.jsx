@@ -15,7 +15,7 @@ const Tags = () => {
 
   return (
     <div>
-      {tag} {posts.items}
+      {tag} {posts}
     </div>
   )
 }
